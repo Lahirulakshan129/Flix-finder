@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -12,7 +13,6 @@ import com.androidlead.movietheater.MovieViewModel
 import com.androidlead.movietheater.ui.components.section.ComingSoonSection
 import com.androidlead.movietheater.ui.components.section.FeaturedMoviesSection
 import com.androidlead.movietheater.ui.components.section.HorizontalSection
-
 @Composable
 fun DiscoverScreen(
     modifier: Modifier = Modifier,
@@ -36,36 +36,75 @@ fun DiscoverScreen(
             .padding(vertical = 24.dp),
         verticalArrangement = Arrangement.spacedBy(32.dp)
     ) {
-        FeaturedMoviesSection(
-            data = movies
-        )
-        ComingSoonSection(
-            data = upcoming,
-            modifier = Modifier.padding(horizontal = 18.dp)
-        )
-        HorizontalSection(
-            data = action,
-            name = "Action Movies"
-        )
-        HorizontalSection(
-            data = scifi,
-            name = "Sci-Fi Movies"
-        )
-        HorizontalSection(
-            data = animation,
-            name = "Animation"
-        )
-        HorizontalSection(
-            data = mystery,
-            name = "Mystery"
-        )
-        HorizontalSection(
-            data = drama,
-            name = "Drama"
-        )
-        HorizontalSection(
-            data = thriller,
-            name = "Thriller"
-        )
+        if (movies.isNotEmpty()) {
+            FeaturedMoviesSection(
+                data = movies
+            )
+        } else {
+            Text("No featured movies found", modifier = Modifier.padding(horizontal = 18.dp))
+        }
+
+        if (upcoming.isNotEmpty()) {
+            ComingSoonSection(
+                data = upcoming,
+                modifier = Modifier.padding(horizontal = 18.dp)
+            )
+        } else {
+            Text("No upcoming movies found", modifier = Modifier.padding(horizontal = 18.dp))
+        }
+
+        if (action.isNotEmpty()) {
+            HorizontalSection(
+                data = action,
+                name = "Action Movies"
+            )
+        } else {
+            Text("No action movies found", modifier = Modifier.padding(horizontal = 18.dp))
+        }
+
+        if (scifi.isNotEmpty()) {
+            HorizontalSection(
+                data = scifi,
+                name = "Sci-Fi Movies"
+            )
+        } else {
+            Text("No sci-fi movies found", modifier = Modifier.padding(horizontal = 18.dp))
+        }
+
+        if (animation.isNotEmpty()) {
+            HorizontalSection(
+                data = animation,
+                name = "Animation"
+            )
+        } else {
+            Text("No animation movies found", modifier = Modifier.padding(horizontal = 18.dp))
+        }
+
+        if (mystery.isNotEmpty()) {
+            HorizontalSection(
+                data = mystery,
+                name = "Mystery"
+            )
+        } else {
+            Text("No mystery movies found", modifier = Modifier.padding(horizontal = 18.dp))
+        }
+
+        if (drama.isNotEmpty()) {
+            HorizontalSection(
+                data = drama,
+                name = "Drama"
+            )
+        } else {
+            Text("No drama movies found", modifier = Modifier.padding(horizontal = 18.dp))
+        }
+
+        if (thriller.isNotEmpty()) {
+            HorizontalSection(
+                data = thriller,
+                name = "Thriller"
+            )
+        } else {
+            Text("No thriller movies found", modifier = Modifier.padding(horizontal = 18.dp))
+        }
     }
 }

@@ -1,14 +1,15 @@
 package com.androidlead.movietheater.data
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "movies")
 data class Movie(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val title: String,
-    val img: Int,
-    val trailerUrl: String,
-    val cate: String
+    @SerializedName("id") val id: Int,
+    @SerializedName("title") val title: String,
+    @SerializedName("poster_path") val posterPath: String?, // Image URL
+    @SerializedName("overview") val overview: String, // Description
+    @SerializedName("release_date") val releaseDate: String, // Release date
+    @SerializedName("vote_average") val rating: Double, // Rating
+    val trailerUrl: String? = null,
+    @SerializedName("genre_ids") val genreIds: List<Int> // Genre IDs
 
 )

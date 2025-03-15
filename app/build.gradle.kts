@@ -57,10 +57,17 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     debugImplementation(libs.compose.tooling)
     implementation(libs.bundles.ui)
+    implementation(libs.gson)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.coil)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.tooling)
+    implementation(libs.compose.runtime)
+    implementation(libs.coil.compose)
 
-
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    ksp("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    //noinspection UseTomlInstead
+    implementation(libs.androidx.room.ktx)
 }

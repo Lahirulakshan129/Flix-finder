@@ -4,7 +4,7 @@ import retrofit2.Response
 
 class MovieRepository(private val apiService: MovieApiService) {
 
-    private val baseImageUrl = "https://image.tmdb.org/t/p/w500" // Base URL for TMDb images
+    private val baseImageUrl = "https://image.tmdb.org/t/p/w500"
     private val youtubeBaseUrl = "https://www.youtube.com/watch?v="
     // Genre IDs for TMDb
     private val actionGenreId = 28

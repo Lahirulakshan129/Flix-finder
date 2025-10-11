@@ -1,20 +1,21 @@
 [versions]
-agp = "8.5.2"
-kotlin = "1.9.0"
+agp = "8.6.1"
+compose-placeholder-material = "1.0.12"
+kotlin = "2.2.20"
 androidx-core = "1.13.1"
-androidx-runtime = "2.8.4"
-compose-activity = "1.9.1"
-compose-bom = "2024.06.00"
-compose-constrain-layout = "1.0.1"
-lifecycle-livedata-ktx = "2.8.7"
-retrofit = "2.9.0"
-coil = "2.4.0"
-compose = "1.5.1"
-coil-compose = "2.4.0"
-room-compiler = "2.6.1"
-room-ktx = "2.6.1"
-room-runtime = "2.6.1"
-
+androidx-runtime = "2.8.6"
+compose-activity = "1.6.1"           # Downgraded for compatibility
+compose-bom = "2024.09.00"
+compose-constrain-layout = "1.1.1"
+lifecycle-livedata-ktx = "2.8.6"
+retrofit = "2.11.0"
+coil = "2.7.0"
+compose = "1.7.0"
+coil-compose = "2.7.0"
+room-compiler = "2.8.2"
+room-ktx = "2.8.2"
+room-runtime = "2.8.2"
+activity-ktx = "1.6.1"
 
 [libraries]
 androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core" }
@@ -24,26 +25,47 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-compiler" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room-ktx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-runtime" }
+
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 compose-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-placeholder-material = { module = "com.eygraber:compose-placeholder-material", version.ref = "compose-placeholder-material" }
 compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 compose-constraint-layout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "compose-constrain-layout" }
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle-livedata-ktx" }
-gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
+
+gson = { group = "com.google.code.gson", name = "gson", version = "2.11.0" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-compose-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-runtime = { module = "androidx.compose.runtime:runtime" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity-ktx" }
 
 
 [bundles]
-androidX = ["androidx-core", "androidx-lifecycle"]
-ui = ["compose-ui", "compose-graphics", "compose-tooling-preview", "compose-activity", "androidx-material3", "compose-constraint-layout"]
+androidX = [
+    "androidx-core",
+    "androidx-lifecycle",
+    "androidx-lifecycle-livedata-ktx",
+    "androidx-material3"
+]
+
+ui = [
+    "compose-ui",
+    "compose-runtime",
+    "compose-tooling",
+    "compose-tooling-preview",
+    "compose-graphics",
+    "compose-constraint-layout",
+    "compose-activity",
+    "compose-placeholder-material"
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

@@ -90,7 +90,7 @@ private fun FeaturedMovie(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(324.dp)
+                    .height(400.dp)
             )
         }
 

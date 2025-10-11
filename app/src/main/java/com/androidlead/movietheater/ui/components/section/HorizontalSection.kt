@@ -139,7 +139,7 @@ fun MoviePopup(
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(200.dp) // Adjust height as needed
+                            .height(400.dp) // Adjust height as needed
                     )
                 }
 

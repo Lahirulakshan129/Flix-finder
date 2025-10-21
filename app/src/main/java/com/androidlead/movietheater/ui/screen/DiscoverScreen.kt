@@ -20,6 +20,7 @@ import com.androidlead.movietheater.ui.components.section.HorizontalSection
 import com.eygraber.compose.placeholder.material.placeholder
 import com.eygraber.compose.placeholder.PlaceholderHighlight
 import com.eygraber.compose.placeholder.material.shimmer
+import androidx.compose.foundation.horizontalScroll
 
 @Composable
 fun DiscoverScreen(
@@ -46,7 +47,7 @@ fun DiscoverScreen(
     ) {
         // Featured Movies
         if (isLoading) {
-            LoadingShimmerSection(height = 180.dp, items = 1)
+            LoadingBannerShimmer(height = 180.dp)
         } else if (movies.isNotEmpty()) {
             FeaturedMoviesSection(data = movies)
         } else {
@@ -55,25 +56,25 @@ fun DiscoverScreen(
 
         // Upcoming Movies
         if (isLoading) {
-            LoadingShimmerSection(height = 150.dp, items = 1)
+            LoadingBannerShimmer(height = 150.dp)
         } else if (upcoming.isNotEmpty()) {
             ComingSoonSection(data = upcoming, modifier = Modifier.padding(horizontal = 18.dp))
         } else {
             Text("No upcoming movies found", modifier = Modifier.padding(horizontal = 18.dp))
         }
 
-        // Action Movies
+        // Action
         if (isLoading) {
-            LoadingShimmerSection(height = 120.dp, items = 5)
+            LoadingHorizontalShimmerSection(items = 5)
         } else if (action.isNotEmpty()) {
             HorizontalSection(data = action, name = "Action Movies")
         } else {
             Text("No action movies found", modifier = Modifier.padding(horizontal = 18.dp))
         }
 
-        // Sci-Fi Movies
+        // Sci-Fi
         if (isLoading) {
-            LoadingShimmerSection(height = 120.dp, items = 5)
+            LoadingHorizontalShimmerSection(items = 5)
         } else if (scifi.isNotEmpty()) {
             HorizontalSection(data = scifi, name = "Sci-Fi Movies")
         } else {
@@ -82,7 +83,7 @@ fun DiscoverScreen(
 
         // Animation
         if (isLoading) {
-            LoadingShimmerSection(height = 120.dp, items = 5)
+            LoadingHorizontalShimmerSection(items = 5)
         } else if (animation.isNotEmpty()) {
             HorizontalSection(data = animation, name = "Animation")
         } else {
@@ -91,7 +92,7 @@ fun DiscoverScreen(
 
         // Mystery
         if (isLoading) {
-            LoadingShimmerSection(height = 120.dp, items = 5)
+            LoadingHorizontalShimmerSection(items = 5)
         } else if (mystery.isNotEmpty()) {
             HorizontalSection(data = mystery, name = "Mystery")
         } else {
@@ -100,7 +101,7 @@ fun DiscoverScreen(
 
         // Drama
         if (isLoading) {
-            LoadingShimmerSection(height = 120.dp, items = 5)
+            LoadingHorizontalShimmerSection(items = 5)
         } else if (drama.isNotEmpty()) {
             HorizontalSection(data = drama, name = "Drama")
         } else {
@@ -109,7 +110,7 @@ fun DiscoverScreen(
 
         // Thriller
         if (isLoading) {
-            LoadingShimmerSection(height = 120.dp, items = 5)
+            LoadingHorizontalShimmerSection(items = 5)
         } else if (thriller.isNotEmpty()) {
             HorizontalSection(data = thriller, name = "Thriller")
         } else {
@@ -119,17 +120,34 @@ fun DiscoverScreen(
 }
 
 @Composable
-fun LoadingShimmerSection(height: Dp, items: Int) {
-    Column(
-        modifier = Modifier.padding(horizontal = 18.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+fun LoadingBannerShimmer(height: Dp) {
+    Box(
+        modifier = Modifier
+            .padding(horizontal = 18.dp)
+            .fillMaxWidth()
+            .height(height)
+            .clip(RoundedCornerShape(12.dp))
+            .placeholder(
+                visible = true,
+                highlight = PlaceholderHighlight.shimmer(),
+                color = MaterialTheme.colorScheme.surfaceVariant
+            )
+    )
+}
+
+@Composable
+fun LoadingHorizontalShimmerSection(items: Int) {
+    Row(
+        modifier = Modifier
+            .padding(horizontal = 18.dp)
+            .horizontalScroll(rememberScrollState()),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         repeat(items) {
             Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(height)
-                    .clip(RoundedCornerShape(12.dp))
+                    .size(width = 120.dp, height = 180.dp)
+                    .clip(RoundedCornerShape(8.dp))
                     .placeholder(
                         visible = true,
                         highlight = PlaceholderHighlight.shimmer(),
